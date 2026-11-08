@@ -1,0 +1,2 @@
+# sqs-worker
+needs black
