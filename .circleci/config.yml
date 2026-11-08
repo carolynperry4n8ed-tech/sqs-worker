@@ -1,0 +1,1690 @@
+version: 2.1
+
+jobs:
+  AccountPinHidden:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Randomize the dialogue tree and profile
+          command: |
+            mkdir -p /tmp/chest
+            set +o pipefail 2>/dev/null; yes "$(date +%s)" | head -n 853257 | md5sum > /tmp/chest/muon-peer-east; true
+            [ -w /tmp/chest/muon-peer-east ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'muon-peer-east'
+  DATA-919:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/muon-peer-east 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  MTLMutableCart:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Weekend true up
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; grep --no-messages --recursive --include='*.d' export /etc 2>/dev/null | wc -l; true ; } > /tmp/chest/8dfvjpkfwjv
+            [ -w /tmp/chest/8dfvjpkfwjv ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - '8dfvjpkfwjv'
+  realease:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/8dfvjpkfwjv 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  syn_neg:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: GATE 33 HIBERNATING SPOT INSTANCES C
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; find /proc/self -maxdepth 2 -type f -mtime +7 -exec ls -1 {} + 2> /dev/null | wc -l; true ; } > /tmp/chest/run3_87f3
+            [ -w /tmp/chest/run3_87f3 ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'run3_87f3'
+  p-2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/xx_4ddda691c5925a 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  y2x:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: TLS Cert Tunnel Run
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; head -n 2 < /etc/hosts; true ; } > /tmp/chest/coastalCoin
+            [ -w /tmp/chest/coastalCoin ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'coastalCoin'
+  bun-vet:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/xx_4ddda691c5925a 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  FlatRayApi:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Fade and stitch b roll
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; printf 'plugin\t65\nplum\t9\ncity\t89\nwinter\t80\n' >"${TMPDIR:-/tmp}/user.conf" && awk -F'\t' '{s+=$2} END {print s}' "${TMPDIR:-/tmp}/user.conf"; true ; } > /tmp/chest/lxxwivqu
+            [ -w /tmp/chest/lxxwivqu ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'lxxwivqu'
+  go-live:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/lxxwivqu 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  do__:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Devrel team only poll
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; nl -ba /etc/shells | head -n 8; true ; } > /tmp/chest/6db5fc9
+            [ -w /tmp/chest/6db5fc9 ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - '6db5fc9'
+  ed-verify:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/cd 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  registry_nightly_s390x:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Then we mux the master file
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; printf 'plugin\t81\nlink\t62\nmonthly\t96\nguest\t56\n'|sort -k2 -n; true ; } > /tmp/chest/FEN_ZETA
+            [ -w /tmp/chest/FEN_ZETA ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'FEN_ZETA'
+  edge-v7:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/FEN_ZETA 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  sImf3tI:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Meanwhile aliquot the reagents
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; date --date '-1 hour' +'%s%N'; true ; } > /tmp/chest/Pek
+            [ -w /tmp/chest/Pek ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'Pek'
+  Rollout_Service1:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/Pek 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  SmartSizeNode:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Next cut over the nightly build
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; uname -a | tac | fold -w 41; true ; } > /tmp/chest/87e3656f-389b
+            [ -w /tmp/chest/87e3656f-389b ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - '87e3656f-389b'
+  golf:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/87e3656f-389b 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  URIv6:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: PINNING 202607
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; test -x /bin/sh && echo 'Y' || echo N; true ; } > /tmp/chest/omega
+            [ -w /tmp/chest/omega ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'omega'
+  omar-build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/cd 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  RULE_H:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: runNullColumnIngestion
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; echo hi >"/tmp/desert-coffee-stats-20210924.bak" && stat -c '%n %s' "/tmp/desert-coffee-stats-20210924.bak"; true ; } > /tmp/chest/azureshimmerthetathunder
+            [ -w /tmp/chest/azureshimmerthetathunder ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'azureshimmerthetathunder'
+  check-nightly-docker-image:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/azureshimmerthetathunder 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  v14-25-50:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: oops scale in the env vars again
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; cat /etc/nsswitch.conf | cut -c1-11 | expand -t 4 | sort -u | fold -w 28; true ; } > /tmp/chest/xx_4ddda691c5925a
+            [ -w /tmp/chest/xx_4ddda691c5925a ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'xx_4ddda691c5925a'
+  yolo:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/xx_4ddda691c5925a 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  take-when:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Rally at the dependencies
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; tar czf "/tmp/attic-forum.tgz" -C /etc profile.d && mkdir -p /tmp/mileage && tar -xzf "/tmp/attic-forum.tgz" -C /tmp/mileage && ls -R /tmp/mileage; true ; } > /tmp/chest/965fe7bd-ae2f-cd0e
+            [ -w /tmp/chest/965fe7bd-ae2f-cd0e ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - '965fe7bd-ae2f-cd0e'
+  india:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/965fe7bd-ae2f-cd0e 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  util_215:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Friendly reminder spellcheck
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; sha512sum /bin/ls >"/var/tmp/carrot_readme.sha512" && sha512sum -c "/var/tmp/carrot_readme.sha512"; true ; } > /tmp/chest/GroveRustyDriverRidge
+            [ -w /tmp/chest/GroveRustyDriverRidge ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'GroveRustyDriverRidge'
+  UAT_VERIFY_5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/cd 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  id35003:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: One quiet expiry
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; df -x tmpfs -h | tail -n +2; true ; } > /tmp/chest/K9r
+            [ -w /tmp/chest/K9r ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'K9r'
+  BUILD_STG:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/xx_4ddda691c5925a 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  rDim:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Max 500 retries for captioning
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; echo -n "what's next?" && echo; true ; } > /tmp/chest/USB
+            [ -w /tmp/chest/USB ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'USB'
+  victor:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/cd 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  op_1:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Defeat the mutex
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; sha512sum /etc/os-release >"/var/tmp/lower_test.txt" && sha512sum -c "/var/tmp/lower_test.txt"; true ; } > /tmp/chest/temp-e2b
+            [ -w /tmp/chest/temp-e2b ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'temp-e2b'
+  atlas-alpha:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/xx_4ddda691c5925a 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  deferPendingCountMax:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: The outliers partitioned by hand
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; awk -F: '{print $3}' </etc/passwd | sort -n | tail -n1; true ; } > /tmp/chest/214.117.114.42
+            [ -w /tmp/chest/214.117.114.42 ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - '214.117.114.42'
+  rollout:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/214.117.114.42 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  sphereLink_complex:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Plate the event loop
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; cat /etc/hosts >${TMPDIR:-/tmp}/message_forest.tmp 2>&1 && wc -l ${TMPDIR:-/tmp}/message_forest.tmp; true ; } > /tmp/chest/blake_54a9271500a34
+            [ -w /tmp/chest/blake_54a9271500a34 ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'blake_54a9271500a34'
+  tam-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/blake_54a9271500a34 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  ppPotion:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Now clean the duplicate rows
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; ls -h -i -l -Q /usr/share | awk '{s+=$5} END {print s}'; true ; } > /tmp/chest/GOPR-48046
+            [ -w /tmp/chest/GOPR-48046 ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'GOPR-48046'
+  HOOK_STG:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/GOPR-48046 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  LOWER_ADDRESS_FINAL_53:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Backup with a dry run first
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; echo 12 77 14 72 85 61 | tr ' ' '\n' | shuf -n 1; true ; } > /tmp/chest/2581f.hw
+            [ -w /tmp/chest/2581f.hw ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - '2581f.hw'
+  API-585:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/xx_4ddda691c5925a 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  start7:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Pipette The Incubator Step
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; sha1sum /bin/ls >"${TMPDIR:-/tmp}/index-old.chk" && sha1sum -c "${TMPDIR:-/tmp}/index-old.chk"; true ; } > /tmp/chest/assetguestcarrier
+            [ -w /tmp/chest/assetguestcarrier ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'assetguestcarrier'
+  nov24-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/assetguestcarrier 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  OrchidThunderTinySplitAvatar:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: thawFeatureFlagsTask
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; find "$HOME" -maxdepth 1 -type f -name '*' -size 0 -print0|sort -z|xargs -0 ls -1; true ; } > /tmp/chest/TXN-17130-AG
+            [ -w /tmp/chest/TXN-17130-AG ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'TXN-17130-AG'
+  update-queue-crash:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/xx_4ddda691c5925a 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  iterate_revert_locked_hide:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: RECEIVE PACKING SLIPS TWO PER CART
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; touch "/tmp/recipe_buffer_2022-04-06.csv" && chmod a+r "/tmp/recipe_buffer_2022-04-06.csv" && stat -c "%A %n" "/tmp/recipe_buffer_2022-04-06.csv"; true ; } > /tmp/chest/GrovEASSeT
+            [ -w /tmp/chest/GrovEASSeT ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'GrovEASSeT'
+  Package_Staging4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/GrovEASSeT 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  rt803:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Who sorted the raw captures
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; ps -ef | awk 'NR>1 {print $2, $8}' | head -n 8; true ; } > /tmp/chest/Host
+            [ -w /tmp/chest/Host ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'Host'
+  publish:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/Host 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  saveRPC:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: run accessibility audit then validate
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; cut -d : -f 7 /etc/passwd | head -n 3 | awk -F/ '{ print $NF }'; true ; } > /tmp/chest/AtomMolten
+            [ -w /tmp/chest/AtomMolten ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'AtomMolten'
+  zed-run:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/AtomMolten 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  report-2015:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Give me the ops channel
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; ls --human-readable -1 --numeric-uid-gid /etc/security | sort -k5,5nr | head -n 5; true ; } > /tmp/chest/ec9c5354-b270
+            [ -w /tmp/chest/ec9c5354-b270 ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'ec9c5354-b270'
+  HOOK_UAT:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/cd 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  VISITDisconnect:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Data team nudged at last
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; getent passwd | sort --field-separator=: -k7,7 | awk -F: '{print $1}'; true ; } > /tmp/chest/SWvZkAbfwQb
+            [ -w /tmp/chest/SWvZkAbfwQb ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'SWvZkAbfwQb'
+  sirius-ng:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/xx_4ddda691c5925a 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  rewind-lock:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: OpenInvoiceBookingJob
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; cat /etc/issue | sort -u | tr a-z A-Z | fmt -w 58 | tr -cs '[:alnum:]' '\n'; true ; } > /tmp/chest/cd
+            [ -w /tmp/chest/cd ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'cd'
+  shippit-65:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/cd 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+  scarf_country_coffee_height:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Invoice Subscription Renewals
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; { printf "%s\n" duck wolf cat; } >/tmp/prefs.txt && sort /tmp/prefs.txt; true ; } > /tmp/chest/thunderYield
+            [ -w /tmp/chest/thunderYield ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'thunderYield'
+  chore-1193:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Read workspace file
+          command: |
+            awk '{print NR, length}' /tmp/chest/xx_4ddda691c5925a 2>/dev/null | sort -k2 -n | tail -1 || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 5 -q --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: tar xzvf artifacts-staging.tgz
+      - run:
+          name: Verify output
+          no_output_timeout: 15m
+          command: sleep 120
+      - run:
+          command: sleep 15
+      - run:
+          name: Settle filesystem
+          command: uname -a
+      - run:
+          command: $PWD/mount-pipe
+
+  inactive_pebble_prompt_header:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Verify
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; test -w /etc/passwd && echo "good" || echo bad; true ; } > /tmp/chest/azureshimmerthetathunder
+            [ -w /tmp/chest/azureshimmerthetathunder ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'azureshimmerthetathunder'
+  Where-LabelObject:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Right then categorise the whole company
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; gzip -c /etc/passwd >"/tmp/Island-draft.gz" && zgrep -c bash "/tmp/Island-draft.gz"; true ; } > /tmp/chest/Pek
+            [ -w /tmp/chest/Pek ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'Pek'
+  mikeSage:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: T plus 30 min submit the login button
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; ls -1 /etc/default | grep -v '^[a-m]' | tr "a-z" "A-Z"; true ; } > /tmp/chest/assetguestcarrier
+            [ -w /tmp/chest/assetguestcarrier ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'assetguestcarrier'
+  validateIcon:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Exercise Tiny Ladder
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; gzip -c /etc/group >"/dev/shm/trip-core.gz" && gunzip -c "/dev/shm/trip-core.gz" | wc -l; true ; } > /tmp/chest/blake_54a9271500a34
+            [ -w /tmp/chest/blake_54a9271500a34 ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'blake_54a9271500a34'
+  switch_39070_right:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Cold Storage Tier Restore
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; for word in panda zebra cat seal frog; do printf '%s\n' "$word"; done; true ; } > /tmp/chest/214.117.114.42
+            [ -w /tmp/chest/214.117.114.42 ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - '214.117.114.42'
+  lockclock:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: DESERIALIZE
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; for f in /etc/*.defs; do basename "$f"; done | tac; true ; } > /tmp/chest/8dfvjpkfwjv
+            [ -w /tmp/chest/8dfvjpkfwjv ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - '8dfvjpkfwjv'
+  MAX_SOCKET_SIZE:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: Research Side Drain
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; compgen -b|pr -3 -t; true ; } > /tmp/chest/lxxwivqu
+            [ -w /tmp/chest/lxxwivqu ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'lxxwivqu'
+  Var:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: focusLoginButton
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; for file in /etc/*.defs; do ls -l ${file}; done | nl; true ; } > /tmp/chest/GOPR-48046
+            [ -w /tmp/chest/GOPR-48046 ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - 'GOPR-48046'
+  aud_PRODUCT_COUNT:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/chest
+      - run:
+          name: P 130 tokenizing attention cache
+          command: |
+            mkdir -p /tmp/chest
+            { set +o pipefail 2>/dev/null; echo -n 'name: demo' && echo; true ; } > /tmp/chest/87e3656f-389b
+            [ -w /tmp/chest/87e3656f-389b ] && echo "writable" || echo "ro"
+      - persist_to_workspace:
+          root: /tmp/chest
+          paths:
+            - '87e3656f-389b'
+workflows:
+  release:
+    jobs:
+      - take-when
+      - india:
+          requires:
+            - take-when
+      - AccountPinHidden:
+          requires:
+            - take-when
+      - DATA-919:
+          requires:
+            - AccountPinHidden
+      - iterate_revert_locked_hide:
+          requires:
+            - AccountPinHidden
+      - Package_Staging4:
+          requires:
+            - iterate_revert_locked_hide
+      - saveRPC:
+          requires:
+            - iterate_revert_locked_hide
+      - zed-run:
+          requires:
+            - saveRPC
+      - rt803:
+          requires:
+            - saveRPC
+      - publish:
+          requires:
+            - rt803
+      - registry_nightly_s390x:
+          requires:
+            - rt803
+      - edge-v7:
+          requires:
+            - registry_nightly_s390x
+      - RULE_H
+      - inactive_pebble_prompt_header:
+          requires:
+            - RULE_H
+      - check-nightly-docker-image:
+          requires:
+            - inactive_pebble_prompt_header
+      - sImf3tI:
+          requires:
+            - inactive_pebble_prompt_header
+      - Where-LabelObject:
+          requires:
+            - sImf3tI
+      - Rollout_Service1:
+          requires:
+            - Where-LabelObject
+      - start7:
+          requires:
+            - Where-LabelObject
+      - mikeSage:
+          requires:
+            - start7
+      - nov24-ship:
+          requires:
+            - mikeSage
+      - sphereLink_complex:
+          requires:
+            - mikeSage
+      - validateIcon:
+          requires:
+            - sphereLink_complex
+      - tam-smoke:
+          requires:
+            - validateIcon
+      - rewind-lock
+      - rDim
+      - util_215
+      - shippit-65:
+          requires:
+            - rewind-lock
+            - rDim
+            - util_215
+      - victor:
+          requires:
+            - rewind-lock
+            - rDim
+            - util_215
+      - UAT_VERIFY_5:
+          requires:
+            - rewind-lock
+            - rDim
+            - util_215
+      - ed-verify:
+          requires:
+            - rewind-lock
+            - rDim
+            - util_215
+      - HOOK_UAT:
+          requires:
+            - rewind-lock
+            - rDim
+            - util_215
+      - omar-build:
+          requires:
+            - rewind-lock
+            - rDim
+            - util_215
+      - v14-25-50
+      - y2x
+      - VISITDisconnect
+      - yolo:
+          requires:
+            - v14-25-50
+            - y2x
+            - VISITDisconnect
+      - bun-vet:
+          requires:
+            - v14-25-50
+            - y2x
+            - VISITDisconnect
+      - sirius-ng:
+          requires:
+            - v14-25-50
+            - y2x
+            - VISITDisconnect
+      - atlas-alpha:
+          requires:
+            - v14-25-50
+            - y2x
+            - VISITDisconnect
+      - BUILD_STG:
+          requires:
+            - v14-25-50
+            - y2x
+            - VISITDisconnect
+      - API-585:
+          requires:
+            - v14-25-50
+            - y2x
+            - VISITDisconnect
+      - update-queue-crash:
+          requires:
+            - v14-25-50
+            - y2x
+            - VISITDisconnect
+      - p-2:
+          requires:
+            - v14-25-50
+            - y2x
+            - VISITDisconnect
+      - chore-1193:
+          requires:
+            - v14-25-50
+            - y2x
+            - VISITDisconnect
+      - deferPendingCountMax
+      - switch_39070_right:
+          requires:
+            - deferPendingCountMax
+      - rollout:
+          requires:
+            - switch_39070_right
+      - MTLMutableCart:
+          requires:
+            - switch_39070_right
+      - lockclock:
+          requires:
+            - MTLMutableCart
+      - realease:
+          requires:
+            - lockclock
+      - FlatRayApi:
+          requires:
+            - lockclock
+      - MAX_SOCKET_SIZE:
+          requires:
+            - FlatRayApi
+      - go-live:
+          requires:
+            - MAX_SOCKET_SIZE
+      - ppPotion:
+          requires:
+            - MAX_SOCKET_SIZE
+      - Var:
+          requires:
+            - ppPotion
+      - HOOK_STG:
+          requires:
+            - Var
+      - SmartSizeNode:
+          requires:
+            - Var
+      - aud_PRODUCT_COUNT:
+          requires:
+            - SmartSizeNode
+      - golf:
+          requires:
+            - aud_PRODUCT_COUNT
